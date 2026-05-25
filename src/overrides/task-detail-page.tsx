@@ -66,9 +66,6 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
   const pageUrl = `${SITE_CONFIG.baseUrl.replace(/\/$/, '')}${buildPostUrl('mediaDistribution', post.slug)}`
   const shareText = encodeURIComponent(post.title)
   const shareUrl = encodeURIComponent(pageUrl)
-  const date = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-    : ''
 
   return (
     <div className="min-h-screen bg-white text-foreground">
@@ -81,7 +78,7 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
           </Link>
           <span className="mx-2 opacity-40">/</span>
           <Link href={archivePath} className="hover:text-primary">
-            Press releases
+            Release Media
           </Link>
           <span className="mx-2 opacity-40">/</span>
           <Link href={`${archivePath}?category=${categorySlug}`} className="hover:text-primary">
@@ -94,12 +91,6 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
             <h1 className="font-[family-name:var(--font-display)] text-3xl font-semibold leading-[1.12] tracking-[-0.03em] text-foreground sm:text-4xl lg:text-[2.35rem]">
               {post.title}
             </h1>
-
-            {date ? (
-              <div className="mt-5 text-sm text-muted-foreground">
-                <span>{date}</span>
-              </div>
-            ) : null}
 
             <div className="mt-6 flex flex-wrap gap-2">
               <a
